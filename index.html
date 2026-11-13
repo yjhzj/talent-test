@@ -20,7 +20,6 @@
     min-height:100vh; display:flex; justify-content:center; padding:20px 16px 60px;
     overflow-x:hidden; -webkit-font-smoothing:antialiased;
   }
-  /* 背景光晕 */
   .orbs{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none;}
   .orb{position:absolute;border-radius:50%;filter:blur(90px);}
   .o1{width:500px;height:500px;background:#4f46e5;top:-150px;left:-150px;opacity:.35;}
@@ -32,7 +31,7 @@
   .screen.active{display:block;animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) both;}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
 
-  /* ---------- 首页升级 ---------- */
+  /* 首页 */
   .hero{text-align:center;padding:5vh 0 0;}
   .brand-tag{
     display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.1em;color:var(--gold);
@@ -66,41 +65,34 @@
   .trust-text{margin-top:20px;font-size:12px;color:#4f5a70;display:flex;justify-content:center;gap:16px;}
   .trust-text span{display:flex;align-items:center;gap:4px;}
 
-  /* ---------- 答题页 ---------- */
+  /* 答题页 */
   .progress-info{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:12px;}
   .progress-bar{height:4px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;}
   .progress-fill{height:100%;width:0;background:linear-gradient(90deg,#6366f1,#d946ef);border-radius:99px;transition:width .4s;}
   
-  .q-card{
-    background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
-    border:1px solid var(--line);border-radius:24px;padding:32px 24px 20px;margin-top:20px;
-  }
+  .q-card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:24px;padding:32px 24px 20px;margin-top:20px;}
   .q-num{font-size:12px;font-weight:800;letter-spacing:.1em;color:#a855f7;margin-bottom:12px;}
   .q-text{font-size:18px;line-height:1.6;font-weight:600;margin-bottom:24px;}
   .options{display:flex;flex-direction:column;gap:10px;}
-  .option{
-    display:flex;align-items:center;gap:14px;width:100%;padding:15px 18px;
-    background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;
-    color:#cbd5e1;font-size:15px;cursor:pointer;transition:all .2s;text-align:left;
-  }
+  .option{display:flex;align-items:center;gap:14px;width:100%;padding:15px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;color:#cbd5e1;font-size:15px;cursor:pointer;transition:all .2s;text-align:left;}
   .option:hover{background:rgba(255,255,255,.07);border-color:rgba(168,85,247,.5);transform:translateX(4px);}
   .opt-dot{flex:0 0 24px;height:24px;line-height:22px;text-align:center;border-radius:50%;border:1px solid rgba(255,255,255,.2);font-size:12px;color:#94a3b8;}
   .option.selected{background:linear-gradient(110deg,rgba(99,102,241,.2),rgba(168,85,247,.2));border-color:#a855f7;color:#fff;}
   .option.selected .opt-dot{background:#a855f7;border-color:#a855f7;color:#fff;font-weight:700;}
 
-  /* ---------- 结果页 ---------- */
+  /* 结果页 */
   .result-head{text-align:center;margin-bottom:24px;position:relative;}
   .eyebrow{font-size:12px;letter-spacing:.2em;color:#94a3b8;margin-bottom:8px;text-transform:uppercase;}
   .result-title{font-size:clamp(28px,6vw,42px);font-weight:800;margin-bottom:8px;}
   .result-tagline{color:var(--gold);font-size:15px;letter-spacing:.05em;font-weight:500;}
   
-  /* 专属虚拟形象 */
-  .avatar-box{position:relative;width:120px;height:120px;margin:24px auto 20px;display:flex;align-items:center;justify-content:center;}
-  .avatar-ring{position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(255,255,255,.15);animation:spin 15s linear infinite;}
-  .avatar-ring-2{position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(255,255,255,.1);}
+  /* 真正的SVG卡通小人容器 */
+  .avatar-box{position:relative;width:160px;height:160px;margin:20px auto 30px;display:flex;align-items:center;justify-content:center;}
+  .avatar-ring{position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(255,255,255,.15);animation:spin 20s linear infinite;}
   @keyframes spin{100%{transform:rotate(360deg);}}
-  .avatar-emoji{font-size:52px;z-index:2;filter:drop-shadow(0 0 20px currentColor);}
-  .avatar-box::after{content:'';position:absolute;inset:15px;border-radius:50%;background:currentColor;filter:blur(25px);opacity:.3;}
+  .avatar-img{width:120px;height:120px;z-index:2;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.5));animation:float 3s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .avatar-box::after{content:'';position:absolute;inset:15px;border-radius:50%;background:currentColor;filter:blur(30px);opacity:.4;}
 
   .panel{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:20px;padding:24px;}
   .panel + .panel{margin-top:16px;}
@@ -129,10 +121,6 @@
   .sec-score{margin-left:auto;color:#94a3b8;font-family:monospace;}
 
   .result-actions{text-align:center;margin-top:30px;}
-  .btn-save{
-    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;
-    padding:12px 24px;border-radius:99px;font-size:14px;cursor:pointer;margin-bottom:16px;font-family:inherit;
-  }
 
   @media (max-width:640px){
     .result-grid{grid-template-columns:1fr;}
@@ -148,7 +136,6 @@
 </div>
 
 <main id="app">
-  <!-- 首页 -->
   <section class="screen active" id="screen-intro">
     <div class="hero">
       <div class="brand-tag">专业职场测评 · 深度解析版</div>
@@ -157,79 +144,47 @@
         基于霍兰德职业兴趣理论深度改编。<br>
         用30个真实职场情境，精准定位你的底层天赋，<br>为你匹配最适合的职业赛道与工作环境。
       </p>
-
       <div class="feature-cards">
-        <div class="f-card">
-          <h4><span>🎯</span> 精准定位</h4>
-          <p>6大核心天赋维度，发现你的隐藏优势</p>
-        </div>
-        <div class="f-card">
-          <h4><span>🧭</span> 职业指南</h4>
-          <p>匹配高薪岗位，告别盲目的职业试错</p>
-        </div>
-        <div class="f-card">
-          <h4><span>📊</span> 可视化报告</h4>
-          <p>专属雷达图与深度画像，一目了然</p>
-        </div>
-        <div class="f-card">
-          <h4><span>🎁</span> 专属IP</h4>
-          <p>生成你的专属天赋卡通形象</p>
-        </div>
+        <div class="f-card"><h4><span>🎯</span> 精准定位</h4><p>6大核心天赋维度，发现你的隐藏优势</p></div>
+        <div class="f-card"><h4><span>🧭</span> 职业指南</h4><p>匹配高薪岗位，告别盲目的职业试错</p></div>
+        <div class="f-card"><h4><span>📊</span> 可视化报告</h4><p>专属雷达图与深度画像，一目了然</p></div>
+        <div class="f-card"><h4><span>🎁</span> 专属IP</h4><p>生成你的专属天赋卡通形象</p></div>
       </div>
-
       <button class="btn-glow" id="btn-start">立即开启测试</button>
-      
-      <div class="trust-text">
-        <span>✅ 全程免费</span>
-        <span>✅ 无需注册</span>
-        <span>✅ 结果保密</span>
-      </div>
+      <div class="trust-text"><span>✅ 全程免费</span><span>✅ 无需注册</span><span>✅ 结果保密</span></div>
     </div>
   </section>
 
-  <!-- 答题页 -->
   <section class="screen" id="screen-quiz">
-    <div class="progress-info">
-      <span id="q-index">1 / 30</span>
-      <button class="link-btn" id="btn-quit" style="background:none;border:none;color:#64748b;">退出</button>
-    </div>
+    <div class="progress-info"><span id="q-index">1 / 30</span><button class="link-btn" id="btn-quit" style="background:none;border:none;color:#64748b;">退出</button></div>
     <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     <div class="q-card" id="q-card">
       <div class="q-num" id="q-num">Q1</div>
       <h2 class="q-text" id="q-text"></h2>
       <div class="options" id="options"></div>
-      <div style="margin-top:16px;text-align:center;">
-        <button id="btn-prev" style="background:none;border:none;color:#64748b;font-size:13px;">← 上一题</button>
-      </div>
+      <div style="margin-top:16px;text-align:center;"><button id="btn-prev" style="background:none;border:none;color:#64748b;font-size:13px;">← 上一题</button></div>
     </div>
   </section>
 
-  <!-- 结果页 -->
   <section class="screen" id="screen-result">
     <div class="result-head">
       <div class="eyebrow">YOUR TALENT REPORT</div>
       <h1 class="result-title" id="res-title"></h1>
       <p class="result-tagline" id="res-tagline"></p>
       
-      <!-- 专属卡通人物形象 -->
+      <!-- SVG卡通人物容器 -->
       <div class="avatar-box" id="avatar-box">
         <div class="avatar-ring"></div>
-        <div class="avatar-ring-2"></div>
-        <div class="avatar-emoji" id="avatar-emoji"></div>
+        <div class="avatar-img" id="avatar-svg"></div>
       </div>
     </div>
 
     <div class="result-grid">
       <div class="panel chart-panel"><canvas id="radar"></canvas></div>
-      <div class="panel">
-        <h3 class="panel-title">天赋分布</h3>
-        <div id="bars"></div>
-      </div>
+      <div class="panel"><h3 class="panel-title">天赋分布</h3><div id="bars"></div></div>
     </div>
-
     <div class="panel" id="res-detail"></div>
     <div class="panel" id="res-secondary"></div>
-
     <div class="result-actions">
       <button class="btn-glow" id="btn-restart">复测 / 重新测试</button>
       <div style="margin-top:16px;font-size:12px;color:#475569;">分享报告给朋友，看看你们是不是最佳搭档？</div>
@@ -241,34 +196,41 @@
 (function(){
   'use strict';
 
-  // 为每个类型增加了 Emoji 虚拟形象和主题色
+  // 这里内置了手绘的SVG卡通人物 (极简几何风)
+  const SVG_AN = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="40" r="20" fill="#5b8cff"/><rect x="20" y="65" width="60" height="30" rx="15" fill="#5b8cff"/><circle cx="43" cy="38" r="4" fill="#fff"/><circle cx="57" cy="38" r="4" fill="#fff"/><rect x="35" y="60" width="30" height="20" rx="5" fill="#1e293b"/><path d="M40 65h20M40 70h10" stroke="#5b8cff" stroke-width="2"/></svg>`;
+  const SVG_CR = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="40" r="20" fill="#b06bff"/><rect x="20" y="65" width="60" height="30" rx="15" fill="#b06bff"/><circle cx="43" cy="38" r="4" fill="#fff"/><circle cx="57" cy="38" r="4" fill="#fff"/><path d="M30 75 Q50 95 70 75" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/><circle cx="80" cy="30" r="10" fill="#fbbf24"/></svg>`;
+  const SVG_CO = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="40" r="20" fill="#ff8a4c"/><rect x="20" y="65" width="60" height="30" rx="15" fill="#ff8a4c"/><circle cx="43" cy="38" r="4" fill="#fff"/><circle cx="57" cy="38" r="4" fill="#fff"/><path d="M40 50 Q50 60 60 50" stroke="#fff" stroke-width="3" stroke-linecap="round"/><rect x="70" y="20" width="20" height="10" rx="5" fill="#fbbf24" transform="rotate(30 80 25)"/></svg>`;
+  const SVG_EM = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="40" r="20" fill="#3dd6a0"/><rect x="20" y="65" width="60" height="30" rx="15" fill="#3dd6a0"/><path d="M40 38 Q43 35 46 38" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M54 38 Q57 35 60 38" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M45 48 Q50 52 55 48" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M30 80 A20 20 0 0 1 70 80" fill="#fff" opacity="0.2"/></svg>`;
+  const SVG_EX = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="40" r="20" fill="#ffce4c"/><rect x="20" y="65" width="60" height="30" rx="15" fill="#ffce4c"/><circle cx="43" cy="38" r="4" fill="#1e293b"/><circle cx="57" cy="38" r="4" fill="#1e293b"/><path d="M40 50 L60 50" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/><rect x="65" y="65" width="20" height="25" rx="4" fill="#fff"/><path d="M70 72 L73 75 L80 68" stroke="#ffce4c" stroke-width="2" stroke-linecap="round"/></svg>`;
+  const SVG_PR = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="40" r="20" fill="#ff6b8b"/><rect x="20" y="65" width="60" height="30" rx="15" fill="#ff6b8b"/><circle cx="43" cy="38" r="4" fill="#fff"/><circle cx="57" cy="38" r="4" fill="#fff"/><rect x="15" y="20" width="10" height="10" rx="2" fill="#cbd5e1"/><rect x="30" y="15" width="10" height="15" rx="2" fill="#94a3b8"/></svg>`;
+
   const TYPES = [
-    { key:'AN', name:'逻辑分析型', short:'逻辑', color:'#5b8cff', emoji:'🧠', tagline:'用理性拆解世界的思考者',
+    { key:'AN', name:'逻辑分析型', short:'逻辑', color:'#5b8cff', svg: SVG_AN, tagline:'用理性拆解世界的思考者',
       desc:'你享受钻进复杂问题里，直到把底层规律摸清楚。面对一团乱麻的信息，别人看到的是噪音，你看到的是结构。',
       strengths:['深度思考','结构化拆解','客观理性','发现漏洞'],
       careers:['数据分析师','算法工程师','金融分析师','战略咨询','医生','法律顾问'],
       env:'需要长时间独立思考、以问题为导向、允许试错与钻研的环境。' },
-    { key:'CR', name:'创意表达型', short:'创意', color:'#b06bff', emoji:'🎨', tagline:'把想法变成作品的造梦者',
+    { key:'CR', name:'创意表达型', short:'创意', color:'#b06bff', svg: SVG_CR, tagline:'把想法变成作品的造梦者',
       desc:'你的脑子里一直在冒出新的可能。你不满足于"本来就是这样"，总想试试"能不能不一样"。',
       strengths:['想象力','审美直觉','打破常规','从零创造'],
       careers:['设计师','内容创作者','广告策划','产品经理','摄影师','品牌创意'],
       env:'宽松自由、允许多样表达、鼓励尝试新方式的环境。' },
-    { key:'CO', name:'沟通影响型', short:'沟通', color:'#ff8a4c', emoji:'🔥', tagline:'推动他人一起行动的点燃者',
+    { key:'CO', name:'沟通影响型', short:'沟通', color:'#ff8a4c', svg: SVG_CO, tagline:'推动他人一起行动的点燃者',
       desc:'你在人群里自带能量。你能快速捕捉到对方在意什么，让一群人愿意跟着你往前走。',
       strengths:['表达力','说服力','号召力','资源整合'],
       careers:['市场营销','销售总监','公关','创业者','主持人','商务拓展'],
       env:'高频与人打交道、需要推动决策、以结果为导向的环境。' },
-    { key:'EM', name:'协作共情型', short:'共情', color:'#3dd6a0', emoji:'🤝', tagline:'读懂人心的连接者',
+    { key:'EM', name:'协作共情型', short:'共情', color:'#3dd6a0', svg: SVG_EM, tagline:'读懂人心的连接者',
       desc:'你天生能"读懂"人。别人的情绪变化很难逃过你的眼睛，这让你成为团队里最被信任的那一个。',
       strengths:['倾听共情','关系建立','耐心陪伴','成就他人'],
       careers:['心理咨询师','教师','人力资源','护士','用户研究'],
       env:'以人为中心、重视信任关系、能看见自己对他人的正面影响的环境。' },
-    { key:'EX', name:'执行组织型', short:'执行', color:'#ffce4c', emoji:'⚙️', tagline:'让计划稳稳落地的推进者',
+    { key:'EX', name:'执行组织型', short:'执行', color:'#ffce4c', svg: SVG_EX, tagline:'让计划稳稳落地的推进者',
       desc:'你是那个把想法真正变成结果的人。喜欢把一团乱麻整理成清晰的步骤，一步步稳稳走到终点。',
       strengths:['条理性','可靠守时','细节把控','流程优化'],
       careers:['项目经理','财务','运营','审计','行政管理','供应链管理'],
       env:'规则清晰、目标明确、以交付质量和稳定性衡量价值的环境。' },
-    { key:'PR', name:'动手实践型', short:'实践', color:'#ff6b8b', emoji:'🛠️', tagline:'相信手感胜过空谈的行动派',
+    { key:'PR', name:'动手实践型', short:'实践', color:'#ff6b8b', svg: SVG_PR, tagline:'相信手感胜过空谈的行动派',
       desc:'比起在纸上推演，你更相信手感和现场。把想法变成能摸得到的东西，会给你带来最真实的成就感。',
       strengths:['动手能力','空间感','现场应变','实操落地'],
       careers:['机械工程师','产品结构设计','厨师','外科医生','飞行员','运动教练'],
@@ -276,47 +238,14 @@
   ];
 
   const RAW_QUESTIONS = [
-    {t:'AN', q:'我喜欢钻研复杂问题背后的原理，直到彻底弄懂'},
-    {t:'CR', q:'我经常冒出别人想不到的点子'},
-    {t:'CO', q:'我很容易说服别人接受我的观点'},
-    {t:'EM', q:'我能敏锐地察觉到别人情绪的变化'},
-    {t:'EX', q:'我习惯把事情列成清单，一项一项完成'},
-    {t:'PR', q:'我喜欢拆装物品，弄清楚它是怎么运作的'},
-    {t:'AN', q:'面对一堆杂乱的信息，我能快速理出条理和逻辑'},
-    {t:'CR', q:'我喜欢用文字、图像、音乐或设计来表达自己'},
-    {t:'CO', q:'在陌生的场合，我也能自在地表达自己'},
-    {t:'EM', q:'别人遇到困难时，我常常是第一个主动上前的人'},
-    {t:'EX', q:'我做事有明确的计划，很少临时抱佛脚'},
-    {t:'PR', q:'比起听理论，我更愿意直接上手试一试'},
-    {t:'AN', q:'我习惯用数据或证据来判断一件事的对错'},
-    {t:'CR', q:'一成不变的节奏会让我感到窒息'},
-    {t:'CO', q:'我喜欢带领一群人朝同一个目标前进'},
-    {t:'EM', q:'我擅长倾听，也愿意耐心陪伴他人'},
-    {t:'EX', q:'我擅长管理时间、预算或流程'},
-    {t:'PR', q:'我擅长使用工具或操作设备'},
-    {t:'AN', q:'听到一个结论时，我会先想：它的推理站得住脚吗'},
-    {t:'CR', q:'我容易在平常的事物中发现美感和灵感'},
-    {t:'CO', q:'谈判或争取资源时，我通常能占据主动'},
-    {t:'EM', q:'团队出现矛盾时，我常充当调和的那个人'},
-    {t:'EX', q:'我注重细节，常能发现别人忽略的错误'},
-    {t:'PR', q:'我喜欢户外、现场，或需要身体参与的工作'},
-    {t:'AN', q:'我喜欢解谜题、做推理题，或者研究事物运行的规律'},
-    {t:'CR', q:'我愿意尝试没人做过的方式，哪怕可能失败'},
-    {t:'CO', q:'我享受上台演讲或向众人展示的场合'},
-    {t:'EM', q:'看到别人因为我的帮助而变好，我会非常有成就感'},
-    {t:'EX', q:'交付任务时，我追求稳定、准时、可靠'},
-    {t:'PR', q:'把图纸或想法变成实物，会让我很有成就感'}
+    {t:'AN', q:'我喜欢钻研复杂问题背后的原理，直到彻底弄懂'},{t:'CR', q:'我经常冒出别人想不到的点子'},{t:'CO', q:'我很容易说服别人接受我的观点'},{t:'EM', q:'我能敏锐地察觉到别人情绪的变化'},{t:'EX', q:'我习惯把事情列成清单，一项一项完成'},{t:'PR', q:'我喜欢拆装物品，弄清楚它是怎么运作的'},{t:'AN', q:'面对一堆杂乱的信息，我能快速理出条理和逻辑'},{t:'CR', q:'我喜欢用文字、图像、音乐或设计来表达自己'},{t:'CO', q:'在陌生的场合，我也能自在地表达自己'},{t:'EM', q:'别人遇到困难时，我常常是第一个主动上前的人'},{t:'EX', q:'我做事有明确的计划，很少临时抱佛脚'},{t:'PR', q:'比起听理论，我更愿意直接上手试一试'},{t:'AN', q:'我习惯用数据或证据来判断一件事的对错'},{t:'CR', q:'一成不变的节奏会让我感到窒息'},{t:'CO', q:'我喜欢带领一群人朝同一个目标前进'},{t:'EM', q:'我擅长倾听，也愿意耐心陪伴他人'},{t:'EX', q:'我擅长管理时间、预算或流程'},{t:'PR', q:'我擅长使用工具或操作设备'},{t:'AN', q:'听到一个结论时，我会先想：它的推理站得住脚吗'},{t:'CR', q:'我容易在平常的事物中发现美感和灵感'},{t:'CO', q:'谈判或争取资源时，我通常能占据主动'},{t:'EM', q:'团队出现矛盾时，我常充当调和的那个人'},{t:'EX', q:'我注重细节，常能发现别人忽略的错误'},{t:'PR', q:'我喜欢户外、现场，或需要身体参与的工作'},{t:'AN', q:'我喜欢解谜题、做推理题，或者研究事物运行的规律'},{t:'CR', q:'我愿意尝试没人做过的方式，哪怕可能失败'},{t:'CO', q:'我享受上台演讲或向众人展示的场合'},{t:'EM', q:'看到别人因为我的帮助而变好，我会非常有成就感'},{t:'EX', q:'交付任务时，我追求稳定、准时、可靠'},{t:'PR', q:'把图纸或想法变成实物，会让我很有成就感'}
   ];
 
-  const OPTIONS = [
-    {v:1, label:'完全不符合'}, {v:2, label:'比较不符合'},
-    {v:3, label:'一般 / 说不准'}, {v:4, label:'比较符合'}, {v:5, label:'完全符合'}
-  ];
+  const OPTIONS = [{v:1, label:'完全不符合'}, {v:2, label:'比较不符合'}, {v:3, label:'一般 / 说不准'}, {v:4, label:'比较符合'}, {v:5, label:'完全符合'}];
 
   let answers = new Array(RAW_QUESTIONS.length).fill(null);
   let idx = 0, locked = false, lastResult = null;
   const optionsEl = document.getElementById('options');
-  const cardEl = document.getElementById('q-card');
   const fillEl = document.getElementById('progress-fill');
   const radarEl = document.getElementById('radar');
 
@@ -328,11 +257,7 @@
     document.getElementById('q-index').textContent = (idx + 1) + ' / ' + RAW_QUESTIONS.length;
     document.getElementById('q-num').textContent = 'Q' + (idx + 1);
     document.getElementById('q-text').textContent = q.q;
-    optionsEl.innerHTML = OPTIONS.map(o => 
-      `<button class="option ${answers[idx] === o.v ? 'selected' : ''}" data-v="${o.v}">
-        <span class="opt-dot">${o.v}</span><span>${o.label}</span>
-      </button>`
-    ).join('');
+    optionsEl.innerHTML = OPTIONS.map(o => `<button class="option ${answers[idx] === o.v ? 'selected' : ''}" data-v="${o.v}"><span class="opt-dot">${o.v}</span><span>${o.label}</span></button>`).join('');
     document.getElementById('btn-prev').style.visibility = idx === 0 ? 'hidden' : 'visible';
     updateProgress(); locked = false;
   }
@@ -341,22 +266,13 @@
     if(locked) return; locked = true; answers[idx] = v;
     Array.from(optionsEl.children).forEach(btn => btn.classList.toggle('selected', Number(btn.dataset.v) === v));
     updateProgress();
-    setTimeout(() => {
-      if(idx < RAW_QUESTIONS.length - 1){ idx++; showQuestion(); }
-      else { locked = false; goResult(); }
-    }, 250);
+    setTimeout(() => { if(idx < RAW_QUESTIONS.length - 1){ idx++; showQuestion(); } else { locked = false; goResult(); } }, 250);
   }
 
-  optionsEl.addEventListener('click', e => {
-    const btn = e.target.closest('.option');
-    if(btn) selectOption(Number(btn.dataset.v));
-  });
-
+  optionsEl.addEventListener('click', e => { const btn = e.target.closest('.option'); if(btn) selectOption(Number(btn.dataset.v)); });
   document.getElementById('btn-prev').onclick = () => { if(idx > 0 && !locked){ idx--; showQuestion(); } };
   document.getElementById('btn-quit').onclick = () => { showScreen('screen-intro'); };
-  document.getElementById('btn-start').onclick = () => { 
-    answers.fill(null); idx = 0; showScreen('screen-quiz'); showQuestion(); 
-  };
+  document.getElementById('btn-start').onclick = () => { answers.fill(null); idx = 0; showScreen('screen-quiz'); showQuestion(); };
 
   function computeScores(){
     const raw = {}; TYPES.forEach(t => raw[t.key] = 0);
@@ -367,116 +283,66 @@
   const toScore = r => Math.round((r - 5) / 20 * 100);
 
   function goResult(){
-    showScreen('screen-result');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    showScreen('screen-result'); window.scrollTo({ top: 0, behavior: 'smooth' });
     const res = computeScores(); lastResult = res;
     const ranked = TYPES.slice().sort((a, b) => res.raw[b.key] - res.raw[a.key]);
     const main = ranked[0];
 
-    // 渲染主视觉与IP
     document.getElementById('res-title').textContent = main.name;
     document.getElementById('res-title').style.color = main.color;
     document.getElementById('res-tagline').textContent = main.tagline;
     
+    // 渲染手绘SVG
     const avatarBox = document.getElementById('avatar-box');
     avatarBox.style.color = main.color;
-    document.getElementById('avatar-emoji').textContent = main.emoji;
+    document.getElementById('avatar-svg').innerHTML = main.svg;
 
     drawRadar(res.norm);
 
-    document.getElementById('bars').innerHTML = ranked.map(t => {
-      const pct = toScore(res.raw[t.key]);
-      return `<div class="bar-row">
-        <div class="bar-top"><span style="color:${t.color};font-weight:600">${t.name}</span><span style="color:#94a3b8">${pct}</span></div>
-        <div class="bar-track"><i style="background:${t.color};width:${Math.max(pct, 3)}%"></i></div>
-      </div>`;
-    }).join('');
+    document.getElementById('bars').innerHTML = ranked.map(t => `<div class="bar-row"><div class="bar-top"><span style="color:${t.color};font-weight:600">${t.name}</span><span style="color:#94a3b8">${toScore(res.raw[t.key])}</span></div><div class="bar-track"><i style="background:${t.color};width:${Math.max(toScore(res.raw[t.key]), 3)}%"></i></div></div>`).join('');
 
-    document.getElementById('res-detail').innerHTML = `
-      <h3 class="panel-title">天赋画像 / PROFILE</h3>
-      <p class="desc-text">${main.desc}</p>
-      <div class="tag-group">
-        <div class="tag-label">核心优势</div>
-        <div class="tags">${main.strengths.map(s => `<span class="tag">${s}</span>`).join('')}</div>
-      </div>
-      <div class="tag-group">
-        <div class="tag-label">适合的职业方向</div>
-        <div class="tags">${main.careers.map(s => `<span class="tag gold">${s}</span>`).join('')}</div>
-      </div>
-      <p class="env-text"><strong>适配环境：</strong>${main.env}</p>
-    `;
+    document.getElementById('res-detail').innerHTML = `<h3 class="panel-title">天赋画像 / PROFILE</h3><p class="desc-text">${main.desc}</p><div class="tag-group"><div class="tag-label">核心优势</div><div class="tags">${main.strengths.map(s => `<span class="tag">${s}</span>`).join('')}</div></div><div class="tag-group"><div class="tag-label">适合的职业方向</div><div class="tags">${main.careers.map(s => `<span class="tag gold">${s}</span>`).join('')}</div></div><p class="env-text"><strong>适配环境：</strong>${main.env}</p>`;
 
-    document.getElementById('res-secondary').innerHTML = `
-      <h3 class="panel-title">辅助天赋 / SYNERGY</h3>
-      ${ranked.slice(1, 4).map(t => `
-        <div class="sec-item">
-          <span class="sec-dot" style="background:${t.color}"></span>
-          <span style="font-weight:600">${t.name}</span>
-          <span class="sec-score">${toScore(res.raw[t.key])} 分</span>
-        </div>
-      `).join('')}
-    `;
+    document.getElementById('res-secondary').innerHTML = `<h3 class="panel-title">辅助天赋 / SYNERGY</h3>${ranked.slice(1, 4).map(t => `<div class="sec-item"><span class="sec-dot" style="background:${t.color}"></span><span style="font-weight:600">${t.name}</span><span class="sec-score">${toScore(res.raw[t.key])} 分</span></div>`).join('')}`;
   }
 
-  document.getElementById('btn-restart').onclick = () => {
-    answers.fill(null); idx = 0; showScreen('screen-intro'); window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  document.getElementById('btn-restart').onclick = () => { answers.fill(null); idx = 0; showScreen('screen-intro'); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
-  // 雷达图（微调了颜色与质感）
   function drawRadar(norm){
     const canvas = radarEl, dpr = window.devicePixelRatio || 1;
     const w = canvas.clientWidth || 300, h = w;
     canvas.width = w * dpr; canvas.height = h * dpr; canvas.style.height = h + 'px';
-    const ctx = canvas.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, w, h);
+    const ctx = canvas.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
     const cx = w/2, cy = h/2, R = w * 0.32, n = TYPES.length;
     const angleOf = i => -Math.PI/2 + i * 2 * Math.PI / n;
 
     for(let ring=1; ring<=4; ring++){
       const r = R * ring / 4; ctx.beginPath();
-      for(let i=0; i<n; i++){
-        const a = angleOf(i), x = cx+Math.cos(a)*r, y = cy+Math.sin(a)*r;
-        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-      }
+      for(let i=0; i<n; i++){ const a = angleOf(i), x = cx+Math.cos(a)*r, y = cy+Math.sin(a)*r; i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); }
       ctx.closePath(); ctx.strokeStyle = `rgba(255,255,255,${0.04 + ring*0.015})`; ctx.stroke();
     }
-    for(let i=0; i<n; i++){
-      const a = angleOf(i); ctx.beginPath(); ctx.moveTo(cx,cy);
-      ctx.lineTo(cx+Math.cos(a)*R, cy+Math.sin(a)*R); ctx.strokeStyle = 'rgba(255,255,255,0.06)'; ctx.stroke();
-    }
+    for(let i=0; i<n; i++){ const a = angleOf(i); ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*R, cy+Math.sin(a)*R); ctx.strokeStyle = 'rgba(255,255,255,0.06)'; ctx.stroke(); }
 
-    const pts = TYPES.map((t, i) => {
-      const a = angleOf(i), v = Math.max(norm[t.key], 0.08);
-      return { x: cx+Math.cos(a)*R*v, y: cy+Math.sin(a)*R*v };
-    });
+    const pts = TYPES.map((t, i) => { const a = angleOf(i), v = Math.max(norm[t.key], 0.08); return { x: cx+Math.cos(a)*R*v, y: cy+Math.sin(a)*R*v }; });
     ctx.beginPath(); pts.forEach((p,i)=> i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y)); ctx.closePath();
     
     const grad = ctx.createLinearGradient(cx-R, cy-R, cx+R, cy+R);
     grad.addColorStop(0, 'rgba(99,102,241,0.6)'); grad.addColorStop(1, 'rgba(217,70,239,0.4)');
     ctx.fillStyle = grad; ctx.fill();
-    ctx.strokeStyle = '#d946ef'; ctx.lineWidth = 2; ctx.lineJoin = 'round'; 
-    ctx.shadowColor = 'rgba(217,70,239,0.8)'; ctx.shadowBlur = 15;
-    ctx.stroke(); ctx.shadowBlur = 0;
+    ctx.strokeStyle = '#d946ef'; ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.shadowColor = 'rgba(217,70,239,0.8)'; ctx.shadowBlur = 15; ctx.stroke(); ctx.shadowBlur = 0;
 
     pts.forEach(p => { ctx.beginPath(); ctx.arc(p.x,p.y,3.5,0,Math.PI*2); ctx.fillStyle = '#fff'; ctx.fill(); });
 
-    const labelR = R + 24;
-    ctx.font = '600 13px sans-serif';
+    const labelR = R + 24; ctx.font = '600 13px sans-serif';
     TYPES.forEach((t,i) => {
-      const a = angleOf(i), x = cx+Math.cos(a)*labelR, y = cy+Math.sin(a)*labelR;
-      const cos = Math.cos(a), sin = Math.sin(a);
+      const a = angleOf(i), x = cx+Math.cos(a)*labelR, y = cy+Math.sin(a)*labelR, cos = Math.cos(a), sin = Math.sin(a);
       ctx.textAlign = Math.abs(cos) < 0.2 ? 'center' : (cos > 0 ? 'left' : 'right');
       ctx.textBaseline = Math.abs(sin) < 0.2 ? 'middle' : (sin > 0 ? 'top' : 'bottom');
-      ctx.fillStyle = norm[t.key] >= 0.5 ? t.color : '#64748b';
-      ctx.fillText(t.short, x, y);
+      ctx.fillStyle = norm[t.key] >= 0.5 ? t.color : '#64748b'; ctx.fillText(t.short, x, y);
     });
   }
 
-  window.addEventListener('resize', () => {
-    if(document.getElementById('screen-result').classList.contains('active') && lastResult){
-      clearTimeout(window.rt); window.rt = setTimeout(() => drawRadar(lastResult.norm), 150);
-    }
-  });
+  window.addEventListener('resize', () => { if(document.getElementById('screen-result').classList.contains('active') && lastResult){ clearTimeout(window.rt); window.rt = setTimeout(() => drawRadar(lastResult.norm), 150); } });
 })();
 </script>
 </body>
